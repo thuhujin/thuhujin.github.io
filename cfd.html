@@ -74,8 +74,16 @@
 										</p>
 								<h2 align="center">Details on Design & Implementation</h2>
 									<h3>Message Passing</h3>
+									<ul>
+										  <li>Coffee</li>
+										<li>Tea</li>
+										<li>Milk</li>
+									</ul>  
 									<p>
-										For message passing algorithms, we followed the approach to divide the underlying domain Ω into subdomains Ω1,Ω2,Ω3,...ΩN and have each processor treat one subdomain. This first domain decomposition method was proposed by Her- rmann Amandus Schwarz. In our solver, we used overlapping subdomains, as shown in figure 7. In each time-stepping loop, each subdomain is assigned to a processor and communicate with its neighbor processors or master processors when necessary.
+										For message passing algorithms, we followed the approach to divide the underlying domain Ω into subdomains and have each processor treat one subdomain. 
+										This first domain decomposition method was proposed by Herrmann Amandus Schwarz. In each time-stepping loop, each subdomain is assigned to a processor 
+										and communicate with its neighbor processors or master processors when necessary.
+									<br>
 									</p>
 									
 								<h3>Cuda Based method</h3>
