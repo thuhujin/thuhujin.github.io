@@ -74,17 +74,14 @@
 										</p>
 								<h2 align="center">Details on Design & Implementation</h2>
 									<h3>Message Passing</h3>
-									<ul>
-										  <li>Coffee</li>
-										<li>Tea</li>
-										<li>Milk</li>
-									</ul>  
 									<p>
 										For message passing algorithms, we followed the approach to divide the underlying domain Ω into subdomains and have each processor treat one subdomain. 
-										This first domain decomposition method was proposed by Herrmann Amandus Schwarz. In each time-stepping loop, each subdomain is assigned to a processor 
-										and communicate with its neighbor processors or master processors when necessary.
-									<br>
+										This first domain decomposition method was proposed by Herrmann Amandus Schwarz. In each time-stepping loop, each subdomain is assigned to a processor and communicate with its neighbor processors or master processors when necessary, which involves the following two communication:
 									</p>
+									<ul style="list-style-type:circle">
+										<li>Communication in boundary values exchange</li>
+										<li>Communication in master/slave mode</li>
+									</ul> 
 									
 								<h3>Cuda Based method</h3>
 									<p>
@@ -95,6 +92,7 @@
 										For the max value of a given matrix, we tried using thrust max element function in the extrema utilities. We also tried cublas’s cublasIdamax function. We also implemented our own reduce based max element function. For the sum of a matrix, it is very similar to the max value function, we also used thrust reduce based implementation, cuBlas vector multiplication by creating a vector of all ones, and our own naive reduce based sum function.
 										Other parts of the code can be executed in parallel without other special interference or change of logic.
 									</p>
+																		 
 								<h2 align="center">Experiments</h2>
 								<h3>Environment Setup</h3>
 									<p>
