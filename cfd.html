@@ -63,21 +63,21 @@
 										<p>
 											Computational Fluid Dynamics is using computing machinery to solve/simulate physical phenomena with fundamental theory in the field of fluid dynamic/mechanics. With the governing equations of fluid mechanics: Navier-Stokes (N-S) equations, one can simulate the flow patterns in a fluid space.
 											With finite difference method, a quadrilateral mesh grid can be created. However, there are many other topological meshes, which can be categorized as structured mesh and unstructured mesh. Instead of finite difference method, finite difference volume is a dominant discretized method used in CFD package since unstructured mesh can be easily implemented with it.
-											In addition, numerical flow simulation is a dominant method to solve the unsteady incompressible N-S equations. With this method, the continuous do- main is discretized and apply the discretized domain to the continuous N-S equations, namely a finite-dimensional problem. The simplest discretization of N-S equations is to use finite difference method to update the values of each cell until it converged. For specific fluid problem, a cell of a staggered 2D grid is shown in figure 1. Besides, the overall discretized domain is shown in figure 2.
+											In addition, numerical flow simulation is a dominant method to solve the unsteady incompressible N-S equations. With this method, the continuous do- main is discretized and apply the discretized domain to the continuous N-S equations, namely a finite-dimensional problem. The simplest discretization of N-S equations is to use finite difference method to update the values of each cell until it converged. 
 										</p>
 									<h3>Problem & Opportunity</h3>
 										<p>
 											Since the finer mesh will increase the accuracy of CFD simulation, scientists ex- pect to reduce the mesh size. However, the computational cost will increase dra- matically as the mesh gets finer. Therefore, parallel computing becomes useful in CFD simulation. In addition, due to complex geometry and boundary condi- tions of data center air-conditioning system, it is usually a time-consuming task to simulate the airflow patterns inside the data center. Hence, our problem is to parallelize the serial version of simulating airflow patterns of the air-conditioning system in a data center. physical model and boundary conditions (data-center; lid-driven cavity) The geometry is shown in figure 3 and the velocity boundary conditions are shown in table 1. Since the data center contains many racks, we just investigate the airflow patterns around one rack. In addition, since the geometry is symmetric, only half of the domain is calculated.
-											In order to simplify the geometry, the lid-driven cavity model (without ob- stacle) was firstly developed to ensure the correctness after parallelization. The physical model and the initial conditions of lid-driven cavity is shown in figure 4.
+											In order to simplify the geometry, the lid-driven cavity model (without ob- stacle) was firstly developed to ensure the correctness after parallelization. 
 										</p>
 									<h3>Our Approach</h3>
 										<p>
-											We parallelize the 2D simulation of Data Center Air Conditioning System using Cuda and MPI. The parallel speedup is to be measured with the baseline of serial version in C. In addition, the correctness is to be guaranteed with the Matlab version, which has already been verified with commercial software of Ansys Workbench. The visualization result is shown in figure 5. More details about our implementation is discussed later.
+											We parallelize the 2D simulation of Data Center Air Conditioning System using Cuda and MPI. The parallel speedup is to be measured with the baseline of serial version in C. In addition, the correctness is to be guaranteed with the Matlab version, which has already been verified with commercial software of Ansys Workbench. More details about our implementation is discussed later.
 										</p>
 								<h2 align="center">Details on Design & Implementation</h2>
 									<h3>Message Passing</h3>
 									<p>
-										For message passing algorithms, we followed the approach to divide the underlying domain Ω into subdomains Ω1,Ω2,Ω3,...ΩN and have each processor treat one subdomain. This first domain decomposition method was proposed by Her- rmann Amandus Schwarz. In our solver, we used overlapping subdomains, as shown in figure 7. In each time-stepping loop, each subdomain is assigned to a processor and communicate with its neighbor processors or master processors when necessary.
+										For message passing algorithms, we followed the approach to divide the underlying domain Ω into subdomains Ω1,Ω2,Ω3,...ΩN and have each processor treat one subdomain. This first domain decomposition method was proposed by Her- rmann Amandus Schwarz. In our solver, we used overlapping subdomains. In each time-stepping loop, each subdomain is assigned to a processor and communicate with its neighbor processors or master processors when necessary.
 									</p>
 									
 								<h3>Cuda Based method</h3>
