@@ -50,7 +50,7 @@
 									<span class="image featured"><img src="images/cover.jpg" alt="" /></span>
 									<h2 align="center">Introduction</h2>
 									<p>
-										We implemented a 2D CFD solver to simulate airflow patterns of a Data Center Air-Conditioning System with MPI model and Cuda. 
+										We've implemented a 2D CFD solver to simulate airflow patterns of a Data Center Air-Conditioning System and parallelized lid-driven cavity model with OpenMPI and Cuda. 
 									</p>
 									<h3>Data Center Cooling</h3>
 									<p>
@@ -72,7 +72,7 @@
 										</p>
 									<h3>Our Approach</h3>
 										<p>
-											We parallelize the 2D simulation of Data Center Air Conditioning System using Cuda and MPI. The parallel speedup is to be measured with the baseline of serial version in C. In addition, the correctness is to be guaranteed with the Matlab version, which has already been verified with commercial software of Ansys Workbench. More details about our implementation is discussed later.
+											Before parallelizing data center air-conditioning system, we've parallelized the 2D simulation of lid-driven cavity using Cuda and MPI. The parallel speedup is to be measured with the baseline of serial version in C. In addition, the correctness is to be guaranteed with the Matlab version, which has already been verified with commercial software of Ansys Workbench. More details about our implementation is discussed later.
 										</p>
 								<h2 align="center">Details on Design & Implementation</h2>
 									<h3>Message Passing</h3>
